@@ -7,8 +7,8 @@ ARG USERNAME=sftp_user
 ARG PASSWORD=Testing123
 
 # configure sftp user
-RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -G sudo -u 10001 ${USERNAME} 
-RUN echo "${USERNAME}:${PASSWORD}" | chpasswd 
+RUN useradd -rm -d /home/${USERNAME} -s /bin/bash -G sudo -u 10001 ${USERNAME}
+RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 
 # necessary sshd file
 RUN mkdir /var/run/sshd
@@ -29,13 +29,13 @@ RUN chmod 755 /var/sftp
 RUN chown ${USERNAME}:${USERNAME} /var/sftp/uploads
 
 
-# update to only allow sftp and not ssh tunneling to limit the non-necessary activity 
+# update to only allow sftp and not ssh tunneling to limit the non-necessary activity
 RUN echo '\n\
     Match User ${USERNAME}  \n\
-    ForceCommand internal-sftp \n\ 
-    PasswordAuthentication yes \n\ 
-    ChrootDirectory /var/sftp \n\ 
-    PermitTunnel yes  \n\ 
-    AllowAgentForwarding no \n\ 
-    AllowTcpForwarding no \n\ 
-    X11Forwarding no ' >> /etc/ssh/sshd_config 
+    ForceCommand internal-sftp \n\
+    PasswordAuthentication yes \n\
+    ChrootDirectory /var/sftp \n\
+    PermitTunnel yes  \n\
+    AllowAgentForwarding no \n\
+    AllowTcpForwarding no \n\
+    X11Forwarding no ' >> /etc/ssh/sshd_config
