@@ -4,13 +4,13 @@
 This is a simple repositry for emulating the SFTP server on a docker container.
 
 ## How to Run?
-To build a docker image you can either pull the same from github artifact or you can use the command below
+To build a docker image you can either pull the same from [Github Package](https://github.com/rpai9/sftp-emulation-docker/pkgs/container/sftp-emulation-docker) or you can use the command below
 
 ```
 DOCKER_BUILDKIT=1  docker build -t sftp_test_server .
 ```
 
-By default the `USERNAME` for the server will be `sftp_user` and the `PASSWORD` will be `Testing123`
+By default the `USERNAME` for the server will be `sftp_user` and the `PASSWORD` will be `Testing123`. (This applies if you get the image from github)
 
 If you want to define the username and password you can pass them in the Docker Run command as shown below
 
